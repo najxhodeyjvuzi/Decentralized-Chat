@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+message Object {
+    string token = 1;
+    string socket = 2;
+}
+
+message Reply {
+    bool flag = 1;
+    repeated string socket = 2;
+}
+
+service Routing {
+    rpc Find(Object) returns (Reply) {}
+    rpc userLogin(Object) returns (Reply) {}
+    rpc userLogout(Object) returns (Reply) {}
+    rpc joinRoom(Object) returns (Reply) {}
+    rpc leaveRoom(Object) returns (Reply) {}
+}
+
+message chatMessage {
+    string message = 1;
+}
+
+message versionMessage {
+    int32 version = 1;
+}
+
+service chat {
+    rpc send_room(chatMessage) returns (Reply) {}
+    rpc apply_for_room_history(Object) returns (chatMessage) {}
+    rpc request_room_version(Object) returns (versionMessage) {}
+
+    rpc send_personal(chatMessage) returns (Reply) {}
+    rpc apply_for_personal_history(Object) returns (chatMessage) {}
+    rpc request_personal_version(Object) returns (versionMessage) {}
+}
