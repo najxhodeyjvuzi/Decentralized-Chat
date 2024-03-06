@@ -394,7 +394,7 @@ while True:
    b
    ```
 
-   ![image-20240113221808704](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113221808704.png)
+   ![image-20240113221808704](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113221808704.png)
 
    可以看到，在一对一聊天中，a和b能够互相看到对方发送的信息，并且聊天记录也被保存在本地的目录中。关于本地聊天记录，在下面的分布式系统一致性部分中会做出更加详细的解释。
 
@@ -415,7 +415,7 @@ while True:
 
    而在聊天房聊天中，另外两个人也能够看到某个人发送的信息，同样有本地聊天记录生成。
 
-   ![image-20240113222157572](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113222157572.png)
+   ![image-20240113222157572](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113222157572.png)
 
    
 
@@ -489,7 +489,7 @@ while True:
 
    他的内容仅仅只是一个整数，如下，是`version.log`和`a-b.log`的对应关系：
 
-   ![image-20240113223021674](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113223021674.png)
+   ![image-20240113223021674](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113223021674.png)
 
    不难看到，实际上`version.log`记录的就是聊天记录中的条数。
 
@@ -511,17 +511,17 @@ while True:
 
       系统会将发送信息的一方的消息缓存在本地，这样，当另一方上线后，就会自动拉取最新的记录，实现消息的同步。
 
-      ![image-20240113223945417](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113223945417.png)
+      ![image-20240113223945417](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113223945417.png)
 
       如上图，b已经登陆，所以a能够连接到b，但是连接是单向的，b还没有建立与a的连接，所以他不能够收到来自a的信息。
 
       然后，我们令b与a进行连接。
 
-      ![image-20240113224136169](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113224136169.png)
+      ![image-20240113224136169](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113224136169.png)
 
       这时可以看到，b离线时接收到的信息，已经通过信息拉取并显示在了屏幕上。消息版本也实现了同步
 
-      ![image-20240113224327480](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113224327480.png)
+      ![image-20240113224327480](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113224327480.png)
 
       
 
@@ -529,17 +529,17 @@ while True:
 
       考虑如下的情况：a，b，c三人创建了一个三人群聊房，他们已经进行了一段时间的对话。
 
-      ![image-20240113225000405](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113225000405.png)
+      ![image-20240113225000405](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113225000405.png)
 
       但是某一时刻，b断线离开了聊天房，而c更是发生了`fail-stop`故障，本地的消息记录缓存也全部丢失（在这里是人为删除整个用户c的聊天记录，并将版本文件删除）。
 
       而在此期间，用户a依然在发言，但是b，c此时必然收不到，a所发送的消息只有他自己能够看到
 
-      ![image-20240113225725913](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113225725913.png)
+      ![image-20240113225725913](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113225725913.png)
 
       但是，当b和c再次连接进入聊天房时，记录都会被同步。
 
-      ![image-20240113225808114](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113225808114.png)
+      ![image-20240113225808114](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113225808114.png)
 
       可以知道我们的容错机制基本有效。
 
@@ -549,7 +549,7 @@ while True:
 
       系统中，在维护用户各自的本地聊天记录时，我们还为各用户维护了一个系统状态日志，以及服务器的状态日志。
 
-      ![image-20240113230202314](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113230202314.png)
+      ![image-20240113230202314](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113230202314.png)
 
       其实，我们可以扩展系统，将其用于检查点的设置，以及状态的回滚。
 
@@ -595,7 +595,7 @@ while True:
 
    可以看到，计算得到的平均时间约为0.00688s，即约6毫秒，响应时间小于10毫秒。
 
-   ![image-20240113212033402](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113212033402.png)
+   ![image-20240113212033402](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113212033402.png)
 
    
 
@@ -605,19 +605,19 @@ while True:
 
    这是显然的，因为每轮发送的信息也是以数倍计算的。
 
-   ![image-20240113213043305](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113213043305.png)
+   ![image-20240113213043305](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113213043305.png)
 
 3. 尝试在单对单的聊天中，发送1000条信息
 
    平均响应时间是4毫秒。
 
-   ![image-20240113214910769](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113214910769.png)
+   ![image-20240113214910769](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113214910769.png)
 
 4. 尝试在单对单的聊天中，互相发送1000条信息
 
    可以看到平均的响应时间为6毫秒左右。
 
-   ![image-20240113215159529](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113215159529.png)
+   ![image-20240113215159529](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113215159529.png)
 
    
 
@@ -625,13 +625,13 @@ while True:
 
    可以看到，响应时间也是有一定的降低，刚好在10毫秒左右。
 
-   ![image-20240113213737391](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113213737391.png)
+   ![image-20240113213737391](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113213737391.png)
 
    另一个值得注意的实验结果是，可以看到下图所展示的消息记录次序，是严格一致的。
 
    这也可以说明在本次实验中采取的一致性操作是有起到作用的，才能维护各用户的消息记录一致。
 
-   ![image-20240113214142560](C:\Users\13030\AppData\Roaming\Typora\typora-user-images\image-20240113214142560.png)
+   ![image-20240113214142560](https://raw.githubusercontent.com/najxhodeyjvuzi/Personal-Image-Hosting/main/image-20240113214142560.png)
 
    
 
